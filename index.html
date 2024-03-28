@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student CRUDS Application</title>
+
+    <!-- primary link css -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+      integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="students my-3">
+      <div class="containder my-5">
+        <div class="row justify-content-center">
+          <div class="col-md-10">
+            <button
+              class="btn btn-sm btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#create-new-student"
+            >
+              Create new student
+            </button>
+
+            <br />
+            <br />
+            <div class="card shadow">
+              <div class="card-header">
+                <h4 class="text-center">All Students Data</h4>
+              </div>
+              <div class="card-body">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Photo</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Phone</th>
+                      <th>Location</th>
+                      <th>Created At</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="studentDataList"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- create new student modal form -->
+
+    <div class="modal fade" id="create-new-student">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="m-3">Create new srudent</h3>
+            <button
+              id="close_kore"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="msg"></div>
+            <form id="studen-create-form">
+              <div class="my-3 m-3">
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Name"
+                  name="name"
+                />
+              </div>
+              <div class="my-3 m-3">
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Email"
+                  name="email"
+                />
+              </div>
+              <div class="my-3 m-3">
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Phone"
+                  name="phone"
+                />
+              </div>
+              <div class="my-3 m-3">
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Location"
+                  name="location"
+                />
+              </div>
+              <div class="my-3 m-3">
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Photo"
+                  name="photo"
+                />
+              </div>
+              <div class="my-3 m-3">
+                <input class="form-control btn btn-primary" type="submit" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- single student modal view -->
+
+    <div class="modal fade" id="single-student-show">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="m-3">Profile</h3>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="student-show"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- edit student modal form -->
+
+    <div class="modal fade" id="edit-student">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="m-3">Edit student data</h2>
+            <button
+              id="up_close"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div id="student-update">
+              <form action="">
+                <div class="my-3 m-3">
+                  <input
+                    class="form-control"
+                    type="hidden"
+                    placeholder="ID"
+                    name="id"
+                  />
+                </div>
+                <div class="my-3 m-3">
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Name"
+                    name="name"
+                  />
+                </div>
+                <div class="my-3 m-3">
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Email"
+                    name="email"
+                  />
+                </div>
+                <div class="my-3 m-3">
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Phone"
+                    name="phone"
+                  />
+                </div>
+                <div class="my-3 m-3">
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Location"
+                    name="location"
+                  />
+                </div>
+                <div class="my-3 m-3">
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Photo"
+                    name="photo"
+                  />
+                </div>
+                <div class="my-3 m-3">
+                  <input
+                    class="form-control btn btn-primary"
+                    value="Update"
+                    type="submit"
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- primary link js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./src/data.js"></script>
+    <script src="./src/functions.js"></script>
+    <script src="./src/models.js"></script>
+    <script src="./src/main.js"></script>
+  </body>
+</html>
